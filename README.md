@@ -57,16 +57,16 @@
 
 ## addresses テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| post_code       | string     | null: false                    |
-| prefectures     | string     | null: false                    |
-| city            | string     | null: false                    |
-| house_number    | string     | null: false                    |
-| building_number | string     | null: false                    |
-| phone_number    | string     | null: false                    |
-| item             | references | null: false, foreign_key: true |
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| post_code       | string     | null: false                     |
+| prefectures     | string     | null: false                     |
+| city            | string     | null: false                     |
+| house_number    | string     | null: false                     |
+| building_number | string     | null: false                     |
+| phone_number    | string     | null: false                     |
+| order           | references | null: false, foreign_key: true  |
 
  ### Association
 
-- belongs_to : order
+- belongs_to :order

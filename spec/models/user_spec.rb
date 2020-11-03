@@ -67,5 +67,35 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Birth day can't be blank")
     end
+    it "emailに@が無い場合は登録できない" do
+      @user.email = "test.com"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email is invalid")
+    end
+    it "passwordは半角英数混合で入力が必要である" do
+      @user.password = "aaaaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+    it "ユーザーfamily_nameは、全角（漢字・ひらがな・カタカナ）での入力が必須であること" do
+      @user.family_name = "TANAKA"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name is invalid")
+    end
+    it "ユーザーfirst_nameは、全角（漢字・ひらがな・カタカナ）での入力が必須であること" do
+      @user.first_name = "ICHORO"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid")
+    end
+    it "ユーザーfamily_name_kanaのフリガナは、全角（カタカナ）での入力が必須であること" do
+      @user.family_name_kana = "たなか"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name kana is invalid")
+    end
+    it "ユーザーfirst_name_kanaは、全角（カタカナ）での入力が必須であること" do
+      @user.first_name_kana ="いちろう"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
+    end
   end
 end

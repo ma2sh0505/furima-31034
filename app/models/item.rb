@@ -13,10 +13,12 @@ class Item < ApplicationRecord
      validates :introduction
      validates :price, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999 }
      validates :image
-     validates :category_id, numericality: { other_than: 1}
-     validates :condition_id, numericality: { other_than: 1}
-     validates :delivery_area_id, numericality: { other_than: 1}
-     validates :delivery_burden_id, numericality: { other_than: 1}
-     validates :delivery_day_id, numericality: { other_than: 1}
+      with_options  numericality: { other_than: 1} do
+       validates :category_id
+       validates :condition_id
+       validates :delivery_area_id
+       validates :delivery_burden_id
+       validates :delivery_day_id
+      end
    end
 end

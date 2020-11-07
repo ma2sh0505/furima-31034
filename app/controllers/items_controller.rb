@@ -41,6 +41,8 @@ class ItemsController < ApplicationController
     if current_user == @item.user
      if @item.destroy
       redirect_to root_path
+     else
+      render :edit
      end
     end
   end

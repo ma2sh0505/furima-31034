@@ -1,8 +1,8 @@
-class OrdersController < 
-  
- def index
- end
+class OrdersController < ApplicationController
 
- def create
- end
+  def index
+  end
+
+  def create
+  end
 end

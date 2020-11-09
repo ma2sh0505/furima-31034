@@ -1,0 +1,2 @@
+class OrderAssress < ApplicationRecord
+end
